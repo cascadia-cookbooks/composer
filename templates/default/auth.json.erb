@@ -1,0 +1,23 @@
+{
+<% if node['composer']['auth']['http-basic'] %>
+    "http-basic": {
+<% node['composer']['auth']['http-basic'].each do |host,data| -%>
+        "<%= host %>": {
+            "username": "<%= data['user'] %>",
+            "password": "<%= data['pass'] %>"
+        }
+<% end -%>
+<% if node['composer']['auth']['github'] %>
+    },
+<% else %>
+    }
+<% end %>
+<% end %>
+<% if node['composer']['auth']['github'] %>
+    "github-oauth": {
+<% node['composer']['auth']['github'].each do |host,token| -%>
+        "<%= host %>": "<%= token %>"
+<% end -%>
+    }
+<% end %>
+}

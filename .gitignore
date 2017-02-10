@@ -1,0 +1,13 @@
+.vagrant
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+
+bin/*
+.bundle/*
+
+.kitchen/
+.kitchen.local.yml
