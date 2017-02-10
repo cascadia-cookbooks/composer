@@ -38,7 +38,7 @@ override_attributes(
                     'pass' => '4a90361167f5a572e5c6bbfa1c64bf888db29334'
                 }
             },
-            'github' => {
+            'github-oauth' => {
                 'github.com' => '717e43f6699ee01c23beda8da9551747033b0062'
             }
         }

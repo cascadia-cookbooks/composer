@@ -7,15 +7,15 @@
             "password": "<%= data['pass'] %>"
         }
 <% end -%>
-<% if node['composer']['auth']['github'] %>
+<% if node['composer']['auth']['github-oauth'] %>
     },
 <% else %>
     }
 <% end %>
 <% end %>
-<% if node['composer']['auth']['github'] %>
+<% if node['composer']['auth']['github-oauth'] %>
     "github-oauth": {
-<% node['composer']['auth']['github'].each do |host,token| -%>
+<% node['composer']['auth']['github-oauth'].each do |host,token| -%>
         "<%= host %>": "<%= token %>"
 <% end -%>
     }
