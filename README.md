@@ -9,9 +9,12 @@ prerequisites like PHP.
 ## Attributes
 * `node['composer']['install']['version']` (string) defaults to `latest`, when
   set to `1.2.3` it will check for that version of composer.phar on [the GitHub
-mirror](https://github.com/composer/getcomposer.org/tree/master/web/download)
+mirror](https://github.com/composer/getcomposer.org/tree/master/web/download).
+* `node['composer']['install']['checksum']` (string) no default, its optional
+  when using a specified version for composer, give it a SHA1 checksum if you
+want to compare it against the binary.
 * `node['composer']['install']['path']` (string) defaults to
-  `/usr/local/bin/composer.phar`, where to install the binary
+  `/usr/local/bin/composer.phar`, where to install the binary.
 * `node['composer']['home']` (string) defaults to `/opt/composer`, where to
   install composer config files like `auth.json`.
 
