@@ -26,7 +26,7 @@ describe 'cop_composer::default' do
     it { should contain('"github.com": "789"') }
   end
 
-  describe command('which composer.phar') do
+  describe command('whereis composer.phar') do
     its(:stdout) { should match /\/usr\/local\/bin\/composer\.phar/ }
   end
 end

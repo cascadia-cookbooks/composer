@@ -24,7 +24,7 @@ suites:
             repo.magento.com:
               user: '123'
               pass: '456'
-          github:
+          github-oauth:
             github.com: '789'
 
   - name: specified
@@ -40,5 +40,5 @@ suites:
             repo.magento.com:
               user: '123'
               pass: '456'
-          github:
+          github-oauth:
             github.com: '789'
