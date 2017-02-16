@@ -4,14 +4,15 @@
 # Author:: Copious Inc. <engineering@copiousinc.com>
 #
 
-binary = node['composer']['install']['path']
+version = node['composer']['install']['version']
+binary  = node['composer']['binary']
 
-if node['composer']['install']['version'] == 'latest'
-    download = 'https://getcomposer.org/composer.phar'
-else
-    version  = node['composer']['install']['version']
-    download = "https://getcomposer.org/download/#{version}/composer.phar"
-    checksum = node['composer']['install']['checksum']
+remote_file 'install composer binary' do
+    path   binary['path']
+    source version == 'latest' ? 'https://getcomposer.org/composer.phar' : "https://getcomposer.org/download/#{version}/composer.phar"
+    owner  binary['user']
+    group  binary['group']
+    mode   binary['mode']
 end
 
 remote_file binary do
