@@ -15,17 +15,9 @@ remote_file 'install composer binary' do
     mode   binary['mode']
 end
 
-remote_file binary do
-    source   download
-    owner    'root'
-    group    'root'
-    mode     0755
-    not_if { File.exist?(binary) }
-end
-
-execute 'validate against checksum' do
-    action     :run
-    subscribes :run, "remote_file[#{binary}]", :immediately
-    command    "openssl sha1 #{binary} | grep #{checksum}"
-    only_if    { node['composer']['install'].attribute?('checksum') }
+execute 'validate binary against checksum' do
+    action :nothing
+    subscribes :run, 'remote_file[composer binary]', :immediately
+    command "openssl sha1 #{binary['path']} | grep #{node['composer']['install']['checksum']}"
+    only_if { node['composer']['install'].attribute?('checksum') }
 end
