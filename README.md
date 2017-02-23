@@ -34,8 +34,8 @@ override_attributes(
         'auth' => {
             'http-basic' => {
                 'repo.magento.com' => {
-                    'user' => 'USER_KEY>',
-                    'pass' => 'PASS_KEY>'
+                    'user' => 'USER_KEY',
+                    'pass' => 'PASS_KEY'
                 }
             },
             'github-oauth' => {
