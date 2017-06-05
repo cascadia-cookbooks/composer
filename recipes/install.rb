@@ -21,3 +21,10 @@ execute 'validate binary against checksum' do
     command "openssl sha1 #{binary['path']} | grep #{node['composer']['install']['checksum']}"
     only_if { node['composer']['install'].attribute?('checksum') }
 end
+
+execute 'Install Composer plugin Prestissimo' do
+    command "#{binary['path']} global require hirak/prestissimo"
+    user    binary['user']
+    only_if { node['composer']['prestissimo'] }
+    not_if  "#{binary['path']} global show | grep prestissimo", :user => binary['user']
+end
