@@ -17,6 +17,8 @@ want to compare it against the binary.
   `/usr/local/bin/composer.phar`, where to install the binary.
 * `node['composer']['home']` (string) defaults to `/opt/composer`, where to
   install composer config files like `auth.json`.
+* `node['composer']['prestissimo']` (boolean) defaults to `true`, see 
+  [hirak/prestissimo](https://github.com/hirak/prestissimo) for more info
 
 ## Usage
 Here's an example `web` role that has some Composer settings.
