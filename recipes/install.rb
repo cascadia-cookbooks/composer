@@ -7,9 +7,23 @@
 version = node['composer']['install']['version']
 binary  = node['composer']['binary']
 
+# Check if requested version is 'latest'
+if version == 'latest'
+    # Require additional Ruby stdlib packages
+    require 'net/http'
+    require 'json'
+
+    # Craft URI for GitHub API - latest release from composer/composer repository
+    uri = URI('https://api.github.com/repos/composer/composer/releases/latest')
+    # Retrieve JSON response from API
+    response = Net::HTTP.get(uri)
+    # Parse release tag from JSON
+    version = JSON.parse(response)["tag_name"]
+end
+
 remote_file 'install composer binary' do
     path   binary['path']
-    source version == 'latest' ? 'https://getcomposer.org/composer.phar' : "https://getcomposer.org/download/#{version}/composer.phar"
+    source "https://getcomposer.org/download/#{version}/composer.phar"
     owner  binary['user']
     group  binary['group']
     mode   binary['mode']
