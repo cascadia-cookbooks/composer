@@ -6,3 +6,5 @@ default['composer']['binary']['user']  = 'root'
 default['composer']['binary']['group'] = 'root'
 
 default['composer']['home'] = '/opt/composer'
+
+default['composer']['prestissimo'] = true
